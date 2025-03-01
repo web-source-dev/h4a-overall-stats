@@ -1,0 +1,162 @@
+[
+    {
+        "Unnamed: 0":null,
+        "Time period":"\n              Day\n            ",
+        "Current period":"\n              Post views\n            "
+    },
+    {
+        "Unnamed: 0":1.0,
+        "Time period":"2025-01-31 00:00:00",
+        "Current period":"4"
+    },
+    {
+        "Unnamed: 0":2.0,
+        "Time period":"2025-01-30 00:00:00",
+        "Current period":"3"
+    },
+    {
+        "Unnamed: 0":3.0,
+        "Time period":"2025-01-29 00:00:00",
+        "Current period":"3"
+    },
+    {
+        "Unnamed: 0":4.0,
+        "Time period":"2025-01-28 00:00:00",
+        "Current period":"3"
+    },
+    {
+        "Unnamed: 0":5.0,
+        "Time period":"2025-01-27 00:00:00",
+        "Current period":"3"
+    },
+    {
+        "Unnamed: 0":6.0,
+        "Time period":"2025-01-26 00:00:00",
+        "Current period":"17"
+    },
+    {
+        "Unnamed: 0":7.0,
+        "Time period":"2025-01-25 00:00:00",
+        "Current period":"8"
+    },
+    {
+        "Unnamed: 0":8.0,
+        "Time period":"2025-01-24 00:00:00",
+        "Current period":"15"
+    },
+    {
+        "Unnamed: 0":9.0,
+        "Time period":"2025-01-23 00:00:00",
+        "Current period":"9"
+    },
+    {
+        "Unnamed: 0":10.0,
+        "Time period":"2025-01-22 00:00:00",
+        "Current period":"5"
+    },
+    {
+        "Unnamed: 0":11.0,
+        "Time period":"2025-01-21 00:00:00",
+        "Current period":"6"
+    },
+    {
+        "Unnamed: 0":12.0,
+        "Time period":"2025-01-20 00:00:00",
+        "Current period":"11"
+    },
+    {
+        "Unnamed: 0":13.0,
+        "Time period":"2025-01-19 00:00:00",
+        "Current period":"6"
+    },
+    {
+        "Unnamed: 0":14.0,
+        "Time period":"2025-01-18 00:00:00",
+        "Current period":"7"
+    },
+    {
+        "Unnamed: 0":15.0,
+        "Time period":"2025-01-17 00:00:00",
+        "Current period":"5"
+    },
+    {
+        "Unnamed: 0":16.0,
+        "Time period":"2025-01-16 00:00:00",
+        "Current period":"6"
+    },
+    {
+        "Unnamed: 0":17.0,
+        "Time period":"2025-01-15 00:00:00",
+        "Current period":"19"
+    },
+    {
+        "Unnamed: 0":18.0,
+        "Time period":"2025-01-14 00:00:00",
+        "Current period":"14"
+    },
+    {
+        "Unnamed: 0":19.0,
+        "Time period":"2025-01-13 00:00:00",
+        "Current period":"7"
+    },
+    {
+        "Unnamed: 0":20.0,
+        "Time period":"2025-01-12 00:00:00",
+        "Current period":"13"
+    },
+    {
+        "Unnamed: 0":21.0,
+        "Time period":"2025-01-11 00:00:00",
+        "Current period":"13"
+    },
+    {
+        "Unnamed: 0":22.0,
+        "Time period":"2025-01-10 00:00:00",
+        "Current period":"17"
+    },
+    {
+        "Unnamed: 0":23.0,
+        "Time period":"2025-01-09 00:00:00",
+        "Current period":"4"
+    },
+    {
+        "Unnamed: 0":24.0,
+        "Time period":"2025-01-08 00:00:00",
+        "Current period":"8"
+    },
+    {
+        "Unnamed: 0":25.0,
+        "Time period":"2025-01-07 00:00:00",
+        "Current period":"5"
+    },
+    {
+        "Unnamed: 0":26.0,
+        "Time period":"2025-01-06 00:00:00",
+        "Current period":"3"
+    },
+    {
+        "Unnamed: 0":27.0,
+        "Time period":"2025-01-05 00:00:00",
+        "Current period":"2"
+    },
+    {
+        "Unnamed: 0":28.0,
+        "Time period":"2025-01-04 00:00:00",
+        "Current period":"8"
+    },
+    {
+        "Unnamed: 0":29.0,
+        "Time period":"2025-01-03 00:00:00",
+        "Current period":"44"
+    },
+    {
+        "Unnamed: 0":30.0,
+        "Time period":"2025-01-02 00:00:00",
+        "Current period":"4"
+    },
+    {
+        "Unnamed: 0":31.0,
+        "Time period":"2025-01-01 00:00:00",
+        "Current period":"1"
+    }
+]

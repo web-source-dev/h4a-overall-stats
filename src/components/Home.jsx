@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Box, Container, Grid, Paper, Typography, Tabs, Tab, AppBar } from "@mui/material";
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, ComposedChart, AreaChart, Area, BarChart, Bar } from "recharts";
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, Cell, LabelList, ResponsiveContainer, ComposedChart, AreaChart, Area, BarChart, Bar } from "recharts";
 import reachData from "./GraphsJson/json_Reach (1).json";
 import reportData from "./GraphsJson/json_report-name_2025-01-01_2025-01-31.json";
 import interactionsData from "./GraphsJson/json_Interactions.json";
@@ -128,13 +128,13 @@ const Home = () => {
 
   return (
     <Box sx={{
-        minHeight: '100vh',
-        display: 'flex',
-        flexDirection: 'column',
-        bgcolor: 'background.default',
-        overflow: 'hidden',
-        position: 'relative'
-      }}>
+      minHeight: '100vh',
+      display: 'flex',
+      flexDirection: 'column',
+      bgcolor: 'background.default',
+      overflow: 'hidden',
+      position: 'relative'
+    }}>
       <Box
         sx={{
           position: 'absolute',
@@ -172,10 +172,10 @@ const Home = () => {
             zIndex: -1
           }
         }}>
-          <Typography 
-            variant="h1" 
-            component="h1" 
-            sx={{ 
+          <Typography
+            variant="h1"
+            component="h1"
+            sx={{
               fontWeight: 800,
               fontSize: { xs: '2.5rem', md: '4.5rem' },
               background: 'linear-gradient(45deg, #2196F3 30%, #21CBF3 90%)',
@@ -190,9 +190,9 @@ const Home = () => {
           >
             Analytics that Tell Our Story
           </Typography>
-          <Typography 
-            variant="h4" 
-            sx={{ 
+          <Typography
+            variant="h4"
+            sx={{
               color: 'text.secondary',
               mb: 6,
               maxWidth: '800px',
@@ -207,196 +207,115 @@ const Home = () => {
             Insights across our all platforms with beautiful, interactive visualizations
           </Typography>
         </Box>
-          <Typography variant="h4" sx={{ mb: 4, textAlign: 'center' }}>Website Analytics</Typography>
-            <Grid container spacing={4}>
-              <Grid item xs={12} md={12}>
-                <Paper elevation={3} sx={{ 
-                  p: 3, 
-                  display: 'flex', 
-                  flexDirection: 'column', 
-                  height: 400,
-                  transition: 'transform 0.3s ease-in-out',
-                  '&:hover': {
-                    transform: 'translateY(-5px)'
-                  }
-                }}>
-                  <Typography variant="h5" gutterBottom sx={{ fontWeight: 500, color: '#ed6c02' }}>
-                    Website Traffic Overview
-                  </Typography>
-                  <Typography variant="subtitle1" sx={{ textAlign: 'center', mb: 1 }}>
-                    Total Page Views: {traffic.reduce((sum, item) => sum + item.pageViews, 0).toLocaleString()}
-                  </Typography>
-                  <ResponsiveContainer width="100%" height="100%">
-                    <BarChart data={traffic} margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
-                      <CartesianGrid strokeDasharray="3 3" />
-                      <XAxis dataKey="date" />
-                      <YAxis />
-                      <Tooltip />
-                      <Legend />
-                      <Bar dataKey="pageViews" fill="#ff9800" />
-                    </BarChart>
-                  </ResponsiveContainer>
-                </Paper>
-              </Grid>
-            </Grid>
-          
-          <Typography variant="h4" sx={{ mb: 4, mt: 8, textAlign: 'center' }}>Facebook Analytics</Typography>
-            <Grid container spacing={4}>
-              {['Interactions', 'Reach', 'Views', 'Visits'].map((metric, index) => (
-                <Grid item xs={12} md={6} key={metric}>
-                  <Paper elevation={2} sx={{ 
-                    p: 3,
-                    height: '90%',
-                    backgroundColor: `rgba(${index === 0 ? '25, 118, 210' : index === 1 ? '46, 125, 50' : index === 2 ? '255, 152, 0' : '255, 87, 34'}, 0.08)`,
-                    transition: 'transform 0.3s ease',
-                    '&:hover': { transform: 'translateY(-4px)' }
-                  }}>
-                    <Typography variant="h6" align="center" sx={{ 
-                      color: index === 0 ? '#1976d2' : index === 1 ? '#2e7d32' : index === 2 ? '#f57c00' : '#ff5722',
-                      mb: 2,
-                      fontWeight: 600
-                    }}>
-                      {metric}
-                    </Typography>
-                    <Typography variant="subtitle1" sx={{ 
-                      textAlign: 'center', 
-                      mb: 3,
-                      fontWeight: 500,
-                      color: 'text.secondary'
-                    }}>
-                      Total: {fbMetrics[metric.toLowerCase()].reduce((sum, item) => sum + item.value, 0).toLocaleString()}
-                    </Typography>
-                    <ResponsiveContainer width="100%" height={250}>
-                      {index === 0 ? (
-                        <LineChart data={fbMetrics[metric.toLowerCase()]} margin={{ top: 20, right: 20, left: 20, bottom: 20 }}>
-                          <CartesianGrid strokeDasharray="3 3" stroke="rgba(0,0,0,0.1)" />
-                          <XAxis dataKey="date" tick={{ fontSize: 12 }} />
-                          <YAxis tick={{ fontSize: 12 }} />
-                          <Tooltip contentStyle={{ backgroundColor: 'rgba(255,255,255,0.95)', borderRadius: 8, boxShadow: '0 2px 10px rgba(0,0,0,0.1)' }} />
-                          <Line type="monotone" dataKey="value" stroke="#1976d2" strokeWidth={2} dot={{ r: 2 }} activeDot={{ r: 6 }} />
-                        </LineChart>
-                      ) : index === 1 ? (
-                        <AreaChart data={fbMetrics[metric.toLowerCase()]} margin={{ top: 20, right: 20, left: 20, bottom: 20 }}>
-                          <CartesianGrid strokeDasharray="3 3" stroke="rgba(0,0,0,0.1)" />
-                          <XAxis dataKey="date" tick={{ fontSize: 12 }} />
-                          <YAxis tick={{ fontSize: 12 }} />
-                          <Tooltip contentStyle={{ backgroundColor: 'rgba(255,255,255,0.95)', borderRadius: 8, boxShadow: '0 2px 10px rgba(0,0,0,0.1)' }} />
-                          <Area type="monotone" dataKey="value" stroke="#2e7d32" fill="#2e7d32" fillOpacity={0.2} />
-                        </AreaChart>
-                      ) : index === 2 ? (
-                        <BarChart data={fbMetrics[metric.toLowerCase()]} margin={{ top: 20, right: 20, left: 20, bottom: 20 }}>
-                          <CartesianGrid strokeDasharray="3 3" stroke="rgba(0,0,0,0.1)" />
-                          <XAxis dataKey="date" tick={{ fontSize: 12 }} />
-                          <YAxis tick={{ fontSize: 12 }} />
-                          <Tooltip contentStyle={{ backgroundColor: 'rgba(255,255,255,0.95)', borderRadius: 8, boxShadow: '0 2px 10px rgba(0,0,0,0.1)' }} />
-                          <Bar dataKey="value" fill="#f57c00" radius={[4, 4, 0, 0]} />
-                        </BarChart>
-                      ) : (
-                        <ComposedChart data={fbMetrics[metric.toLowerCase()]} margin={{ top: 20, right: 20, left: 20, bottom: 20 }}>
-                          <CartesianGrid strokeDasharray="3 3" stroke="rgba(0,0,0,0.1)" />
-                          <XAxis dataKey="date" tick={{ fontSize: 12 }} />
-                          <YAxis tick={{ fontSize: 12 }} />
-                          <Tooltip contentStyle={{ backgroundColor: 'rgba(255,255,255,0.95)', borderRadius: 8, boxShadow: '0 2px 10px rgba(0,0,0,0.1)' }} />
-                          <Bar dataKey="value" fill="#ff5722" fillOpacity={0.4} radius={[4, 4, 0, 0]} />
-                          <Line type="monotone" dataKey="value" stroke="#ff5722" strokeWidth={2} dot={true} />
-                        </ComposedChart>
-                      )}
-                    </ResponsiveContainer>
-                  </Paper>
-                </Grid>
-              ))}
-            </Grid>
-          
-          <Typography variant="h4" sx={{ mb: 4, mt: 8, textAlign: 'center' }}>Instagram Insights</Typography>
-            <Grid container spacing={4}>
-              <Grid item xs={12} md={6}>
-                <Paper elevation={2} sx={{ p: 3, bgcolor: 'rgba(225, 48, 108, 0.05)', height: '100%' }}>
-                  <Typography variant="h6" align="center" sx={{ color: '#e1306c', mb: 2 }}>Views</Typography>
-                  <Typography variant="subtitle1" sx={{ textAlign: 'center', mb: 2, fontWeight: 500 }}>
-                    Total: {igMetrics.views.reduce((sum, item) => sum + item.value, 0).toLocaleString()}
-                  </Typography>
-                  <ResponsiveContainer width="100%" height={250}>
-                    <BarChart data={igMetrics.views} margin={{ top: 10, right: 10, left: 0, bottom: 0 }}>
-                      <CartesianGrid strokeDasharray="3 3" />
-                      <XAxis dataKey="date" />
-                      <YAxis />
-                      <Tooltip />
-                      <Bar dataKey="value" fill="#E1306C" />
-                    </BarChart>
-                  </ResponsiveContainer>
-                </Paper>
-              </Grid>
-              <Grid item xs={12} md={6}>
-                <Paper elevation={2} sx={{ p: 3, bgcolor: 'rgba(193, 53, 132, 0.05)', height: '100%' }}>
-                  <Typography variant="h6" align="center" sx={{ color: '#c13584', mb: 2 }}>Reach</Typography>
-                  <Typography variant="subtitle1" sx={{ textAlign: 'center', mb: 2, fontWeight: 500 }}>
-                    Total: {igMetrics.reach.reduce((sum, item) => sum + item.value, 0).toLocaleString()}
-                  </Typography>
-                  <ResponsiveContainer width="100%" height={250}>
-                    <AreaChart data={igMetrics.reach} margin={{ top: 10, right: 10, left: 0, bottom: 0 }}>
-                      <CartesianGrid strokeDasharray="3 3" />
-                      <XAxis dataKey="date" />
-                      <YAxis />
-                      <Tooltip />
-                      <Area type="monotone" dataKey="value" stroke="#C13584" fill="#C13584" fillOpacity={0.3} />
-                    </AreaChart>
-                  </ResponsiveContainer>
-                </Paper>
-              </Grid>
-            </Grid>
-          
-          <Typography variant="h4" sx={{ mb: 4, mt: 12, textAlign: 'center' }}>Blog Performance</Typography>
-            <Grid container spacing={4}>
-              <Grid item xs={12} md={6}>
-                <Paper elevation={2} sx={{ 
-                  p: 3,
-                  height: '90%',
-                  backgroundColor: 'rgba(103, 58, 183, 0.08)',
-                  transition: 'transform 0.3s ease',
-                  '&:hover': { transform: 'translateY(-4px)' }
-                }}>
-                  <Typography variant="h6" align="center" sx={{ color: '#673ab7', mb: 2 }}>Blog Views</Typography>
-                  <Typography variant="subtitle1" sx={{ textAlign: 'center', mb: 2, fontWeight: 500 }}>
-                    Total Views: {blogStats.reduce((sum, item) => sum + item.views, 0).toLocaleString()}
-                  </Typography>
-                  <ResponsiveContainer width="100%" height={300}>
-                    <LineChart data={blogStats} margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
-                      <CartesianGrid strokeDasharray="3 3" />
-                      <XAxis dataKey="date" />
-                      <YAxis />
-                      <Tooltip />
-                      <Line type="monotone" dataKey="views" stroke="#8884d8" activeDot={{ r: 8 }} />
-                    </LineChart>
-                  </ResponsiveContainer>
-                </Paper>
-              </Grid>
-              <Grid item xs={12} md={6}>
-                <Paper elevation={2} sx={{ 
-                  p: 3,
-                  height: '90%',
-                  backgroundColor: 'rgba(46, 125, 50, 0.08)',
-                  transition: 'transform 0.3s ease',
-                  '&:hover': { transform: 'translateY(-4px)' }
-                }}>
-                  <Typography variant="h6" align="center" sx={{ color: '#673ab7', mb: 2 }}>Blog Visitors</Typography>
-                  <Typography variant="subtitle1" sx={{ textAlign: 'center', mb: 2, fontWeight: 500 }}>
-                    Total Views: {blogStats.reduce((sum, item) => sum + item.visitors, 0).toLocaleString()}
-                  </Typography>
-                  <ResponsiveContainer width="100%" height={300}>
-                    <LineChart data={blogStats} margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
-                      <CartesianGrid strokeDasharray="3 3" />
-                      <XAxis dataKey="date" />
-                      <YAxis />
-                      <Tooltip />
-                      <Line type="monotone" dataKey="visitors" stroke="#82ca9d" activeDot={{ r: 8 }} />
-                    </LineChart>
-                  </ResponsiveContainer>
-                </Paper>
-              </Grid>
-            </Grid>
+        <Typography variant="h4" sx={{ mb: 4, textAlign: 'center' }}>Overall Platform Performance</Typography>
+        <Grid container spacing={4} sx={{ mb: 8 }}>
+          <Grid item xs={12}>
+            <Paper elevation={3} sx={{
+              p: 3,
+              display: 'flex',
+              flexDirection: 'column',
+              height: 600,
+              transition: 'transform 0.3s ease-in-out',
+              '&:hover': {
+                transform: 'translateY(-5px)'
+              }
+            }}>
+              <Typography variant="h5" gutterBottom sx={{ fontWeight: 500, color: '#1976d2' }}>
+                Cross-Platform Analytics Overview
+              </Typography>
+              <ResponsiveContainer width="100%" height="90%">
+                <BarChart
+                  layout="vertical"
+                  data={[
+                    {
+                      name: 'Website Views',
+                      value: traffic.reduce((sum, item) => sum + item.pageViews, 0)
+                    },
+                    {
+                      name: 'Facebook Interactions',
+                      value: fbMetrics.interactions.reduce((sum, item) => sum + item.value, 0)
+                    },
+                    {
+                      name: 'Facebook Reach',
+                      value: fbMetrics.reach.reduce((sum, item) => sum + item.value, 0)
+                    },
+                    {
+                      name: 'Facebook Views',
+                      value: fbMetrics.views.reduce((sum, item) => sum + item.value, 0)
+                    },
+                    {
+                      name: 'Facebook Visits',
+                      value: fbMetrics.visits.reduce((sum, item) => sum + item.value, 0)
+                    },
+                    {
+                      name: 'Instagram Views',
+                      value: igMetrics.views.reduce((sum, item) => sum + item.value, 0)
+                    },
+                    {
+                      name: 'Instagram Reach',
+                      value: igMetrics.reach.reduce((sum, item) => sum + item.value, 0)
+                    },
+                    {
+                      name: 'Blog Views',
+                      value: blogStats.reduce((sum, item) => sum + item.views, 0)
+                    },
+                    {
+                      name: 'Blog Visitors',
+                      value: blogStats.reduce((sum, item) => sum + item.visitors, 0)
+                    }
+                  ]}
+                  margin={{ top: 20, right: 30, left: 100, bottom: 5 }}
+                >
+                  <CartesianGrid strokeDasharray="3 3" />
+                  <XAxis type="number" tickFormatter={(value) => `${(value / 1000).toFixed(1)}K`} />
+                  <YAxis dataKey="name" type="category" />
+                  <Tooltip formatter={(value) => `${(value / 1000).toFixed(1)}K`} />
+                  <Bar dataKey="value">
+                  <LabelList
+  dataKey="value"
+  position="right"
+  formatter={(value) => `${(value / 1000).toFixed(1)}K`}
+  content={(props) => {
+    const { x, y, value } = props;
+    return (
+      <text
+        x={x + 1200} // Adjust to keep it on the right
+        y={y + 30} 
+        dy={4}
+        fill="#000" // Dark black color
+        fontWeight="bold" // Bold text
+        fontSize={18}
+        textAnchor="start"
+      >
+        {(value / 1000).toFixed(1)}K
+      </text>
+    );
+  }}
+/>
 
-        </Container>
-      </Box>
+                    {[
+                      { fill: '#FF5733a2' }, // Bright Red-Orange
+                      { fill: '#FF33A8a2' }, // Neon Pink
+                      { fill: '#33FF57a2' }, // Vivid Green
+                      { fill: '#33A8FFa2' }, // Electric Blue
+                      { fill: '#FFD700a2' }, // Gold
+                      { fill: '#FF4500a2' }, // Orange-Red
+                      { fill: '#8A2BE2a2' }, // Blue Violet
+                      { fill: '#00FFFFa2' }, // Cyan
+                      { fill: '#FF1493a2' }  // Deep Pink
+                    ].map((entry, index) => (
+                      <Cell key={`cell-${index}`} fill={entry.fill} />
+                    ))}
+
+                  </Bar>
+                </BarChart>
+              </ResponsiveContainer>
+            </Paper>
+          </Grid>
+        </Grid>
+
+      </Container>
+    </Box>
   );
 };
 export default Home

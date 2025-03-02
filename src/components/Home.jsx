@@ -271,27 +271,7 @@ const Home = () => {
                   <YAxis dataKey="name" type="category" />
                   <Tooltip formatter={(value) => `${(value / 1000).toFixed(1)}K`} />
                   <Bar dataKey="value">
-                  <LabelList
-  dataKey="value"
-  position="right"
-  formatter={(value) => `${(value / 1000).toFixed(1)}K`}
-  content={(props) => {
-    const { x, y, value } = props;
-    return (
-      <text
-        x={x + 1200} // Adjust to keep it on the right
-        y={y + 30} 
-        dy={4}
-        fill="#000" // Dark black color
-        fontWeight="bold" // Bold text
-        fontSize={18}
-        textAnchor="start"
-      >
-        {(value / 1000).toFixed(1)}K
-      </text>
-    );
-  }}
-/>
+                 <LabelList dataKey="value" position="right" formatter={(value) => ${(value / 1000).toFixed(1)}K} />
 
                     {[
                       { fill: '#FF5733a2' }, // Bright Red-Orange

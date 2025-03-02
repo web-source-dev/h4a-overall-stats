@@ -271,7 +271,7 @@ const Home = () => {
                   <YAxis dataKey="name" type="category" />
                   <Tooltip formatter={(value) => `${(value / 1000).toFixed(1)}K`} />
                   <Bar dataKey="value">
-                 <LabelList dataKey="value" position="right" formatter={(value) => ${(value / 1000).toFixed(1)}K} />
+                 <LabelList dataKey="value" position="right" formatter={(value) => `${(value / 1000).toFixed(1)}K`} />
 
                     {[
                       { fill: '#FF5733a2' }, // Bright Red-Orange
